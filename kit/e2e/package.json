@@ -1,0 +1,15 @@
+{
+  "name": "actionplan-e2e",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:journey": "playwright test --grep @journey",
+    "test:gate": "playwright test --grep-invert @known-bug",
+    "report": "playwright show-report",
+    "install:browser": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "dotenv": "^16.4.0"
+  }
+}

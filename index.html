@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Akshay Nikhare">
+<title>ActionPlan Kit — ship more, get interrupted less</title>
+<meta name="description" content="A spec-kit-style toolkit for AI-driven development: batch every question, build the whole sprint, QA by a separate agent, one poke when it's your turn.">
+<link rel="canonical" href="https://akshaynikhare.github.io/action-plan-kit/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ActionPlan Kit — ship more, get interrupted less">
+<meta property="og:description" content="Batch every question, build the whole sprint, QA by a separate agent, one poke when it's your turn.">
+<meta property="og:url" content="https://akshaynikhare.github.io/action-plan-kit/">
+<!-- TODO(verify): og:image — add a 1200x630 social card when one exists -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔔</text></svg>">
+<style>
+  :root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--txt:#e6edf3;--dim:#8b949e;--acc:#3fb950;--acc2:#58a6ff;--warn:#d29922}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  code,pre,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header{padding:96px 0 64px;text-align:center}
+  h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.15;letter-spacing:-.02em}
+  h1 em{color:var(--acc);font-style:normal}
+  .sub{color:var(--dim);font-size:1.15rem;max-width:620px;margin:20px auto 0}
+  .cta{display:inline-block;margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 22px;color:var(--acc);text-align:left}
+  section{padding:48px 0;border-top:1px solid var(--line)}
+  h2{font-size:1.5rem;margin-bottom:8px}
+  .lead{color:var(--dim);margin-bottom:28px}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;counter-reset:step}
+  .flow div{flex:1 1 140px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;counter-increment:step;min-width:140px}
+  .flow div::before{content:counter(step) " ";color:var(--acc2);font-weight:700}
+  .flow b{display:block;margin-bottom:4px}
+  .flow small{color:var(--dim)}
+  .flow .stop{border-color:var(--warn)}
+  .flow .stop::after{content:" ← you";color:var(--warn);font-size:.8rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px}
+  .card b{color:var(--acc2)}
+  .card p{color:var(--dim);font-size:.95rem;margin-top:6px}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;overflow-x:auto;font-size:.9rem;line-height:1.7}
+  pre .c{color:var(--dim)} pre .g{color:var(--acc)}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{color:var(--dim);font-weight:600}
+  td:first-child{white-space:nowrap;color:var(--acc2)}
+  footer{padding:48px 0;color:var(--dim);text-align:center;border-top:1px solid var(--line);font-size:.9rem}
+  a{color:var(--acc2);text-decoration:none} a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>Plan once. Build everything.<br><em>Get interrupted twice.</em></h1>
+  <p class="sub">ActionPlan Kit is a drop-in framework for AI-driven development: every question answered
+  up front, the whole sprint built without check-ins, QA by a separate agent — then one poke when it's your turn.</p>
+  <pre class="cta mono">git clone https://github.com/akshaynikhare/action-plan-kit
+cd action-plan-kit &amp;&amp; ./install.sh --target ../my-repo --code AP</pre>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The contract — a full SDLC, two interruptions</h2>
+    <p class="lead">Every mid-build question costs you a context switch. The kit spends your attention twice, on purpose, never ten times.</p>
+    <div class="flow">
+      <div><b>Init</b><small>intent interview — why, who, market</small></div>
+      <div><b>Plan</b><small>story, acceptance criteria, checklist</small></div>
+      <div class="stop"><b>Clarify</b><small>ALL open questions, one batch</small></div>
+      <div><b>Build</b><small>every task; blockers parked, never guessed</small></div>
+      <div><b>Test</b><small>QA-DEV loop by a different agent</small></div>
+      <div class="stop"><b>Review</b><small>🔔 one poke — you sign off last</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What keeps it honest</h2>
+    <div class="grid">
+      <div class="card"><b>Fresh-context QA</b><p>A different agent reads only the diff — 7–8 line brief in, 7–8 line report back. It can't inherit the builder's assumptions.</p></div>
+      <div class="card"><b>Static gates that ratchet</b><p>7 selftested gates: requirement→test tracing, no plan ids in code, DoD before archive, dead-link detection. Baselines only shrink.</p></div>
+      <div class="card"><b>The Mirror</b><p><code>make status</code> ends with computed verdicts: "6 of 14 criteria have no test. You are shipping hope." No number, no line.</p></div>
+      <div class="card"><b>One session per file</b><p>File locks stop parallel AI sessions colliding. Works across tools — the rules ship in both CLAUDE.md and AGENTS.md.</p></div>
+      <div class="card"><b>Decision memory</b><p>DECISIONS.md stops the next cycle "fixing back" a deliberate choice. Sliced by script, never read whole — token-cheap.</p></div>
+      <div class="card"><b>Real-browser QA</b><p>Playwright walk with six lenses — Broken, Confusing, Wrong, Leaky, Findable, Off-brand — plus a committed e2e scaffold.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Daily use</h2>
+    <table>
+      <tr><th>Command</th><th>When</th></tr>
+      <tr><td>/ap:init</td><td>Once per project — the intent interview (why, who, what, how to market)</td></tr>
+      <tr><td>/ap:new &lt;ask&gt;</td><td>File a story with acceptance criteria and a tickable checklist</td></tr>
+      <tr><td>/ap:ask</td><td>Clear every open question in one batch — then you're free</td></tr>
+      <tr><td>/ap:run &lt;id&gt; …</td><td>The sprint: builds everything, gates, QA loop, ONE poke</td></tr>
+      <tr><td>/ap:status</td><td>Board, velocity, and the Mirror</td></tr>
+      <tr><td>make help</td><td>dev · test · lint · check · status — quick launch, any repo</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What lands in your repo</h2>
+<pre><span class="c"># agents' folder — delete it and the kit is gone</span>
+.actionplan/   <span class="g">plans · QA evidence · gates · locks · decision memory</span>
+<span class="c"># your folder — intent, constitution, design system, SDLC, standards</span>
+docs/          <span class="g">_architecture/ · _design/ · _workflow/</span>
+Makefile       <span class="g">quick launch, generated from your stack</span>
+CLAUDE.md + AGENTS.md  <span class="g">one managed block each — works in any AI tool</span></pre>
+  </div>
+</section>
+
+<footer>
+  <p>By <a href="https://github.com/akshaynikhare">Akshay Nikhare</a> ·
+  <a href="https://github.com/akshaynikhare/action-plan-kit">GitHub</a> ·
+  Drop-in toolkit — no npm package, no build step, never touches your git.</p>
+</footer>
+
+</body>
+</html>

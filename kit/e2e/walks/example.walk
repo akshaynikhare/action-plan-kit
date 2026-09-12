@@ -1,0 +1,6 @@
+# Steps for qa-walk.mjs — one per line. Locators are role/label based, never test ids.
+goto http://localhost:3000
+shot home
+# click link Pricing
+# shot pricing
+# fill Email test@example.com

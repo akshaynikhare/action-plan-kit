@@ -1,0 +1,18 @@
+{
+  "code": "AP",
+  "name": "TODO(verify): project name",
+  "detected": "2026-09-12",
+  "packageManager": "TODO(verify): npm|pnpm|yarn|bun",
+  "apps": [],
+  "commands": {
+    "dev": "TODO(verify)",
+    "test": "TODO(verify)",
+    "lint": "TODO(verify)",
+    "typecheck": "TODO(verify)"
+  },
+  "ports": {},
+  "srcDirs": ["src"],
+  "lanes": { "orchestrator": "session", "complex": "opus", "bulk": "sonnet" },
+  "lockStaleHours": 8,
+  "qaMaxRounds": 3
+}
