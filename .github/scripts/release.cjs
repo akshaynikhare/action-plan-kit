@@ -2,7 +2,7 @@
 // Validate release metadata, package an installable bundle, and publish without replacing assets.
 const fs = require('fs'), path = require('path'), os = require('os'), crypto = require('crypto');
 const { execFileSync } = require('child_process');
-const root = path.resolve(__dirname, '../..');
+const root = process.env.ACTIONPLAN_RELEASE_SOURCE ? path.resolve(process.env.ACTIONPLAN_RELEASE_SOURCE) : path.resolve(__dirname, '../..');
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const bundleFiles = ['install.sh', 'VERSION', 'LICENSE', 'README.md', 'CHANGELOG.md', 'CITATION.cff', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'MAINTAINERS.md', 'SPONSORING.md', 'docs', 'kit'];
@@ -47,9 +47,8 @@ function publish(tag, sha) {
   let release = releases.find(r => r.tag_name === tag);
   const notes = path.join(dir, 'RELEASE_NOTES.md'); fs.writeFileSync(notes, meta.notes);
   if (!release) {
-    gh(['release', 'create', tag, '--repo', repo, '--verify-tag', '--draft', '--title', `ActionPlan Kit ${tag}`, '--notes-file', notes]);
-    release = JSON.parse(gh(['api', `repos/${repo}/releases?per_page=100`])).find(r => r.tag_name === tag);
-    if (!release) throw Error('Created draft release could not be read back');
+    release = JSON.parse(gh(['api', '--method', 'POST', `repos/${repo}/releases`, '-f', `tag_name=${tag}`, '-f', `target_commitish=${sha}`, '-f', `name=ActionPlan Kit ${tag}`, '-f', `body=${meta.notes}`, '-F', 'draft=true']));
+    if (!release.id || !Array.isArray(release.assets)) throw Error('Release creation returned an invalid draft');
   }
   const existingArchive = release.assets.find(a => a.name === archive);
   let archiveHash;
@@ -83,4 +82,4 @@ if (require.main === module) {
     else throw Error('Usage: release.cjs validate [tag] | package [output-dir] | publish <tag> <sha>');
   } catch (err) { console.error(`[release] ${err.message}`); process.exitCode = 1; }
 }
-module.exports = { validate, packageRelease, bundleFiles };
+module.exports = { validate, packageRelease, publish, bundleFiles };

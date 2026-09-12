@@ -59,3 +59,28 @@ test('community and user guides have no broken local Markdown links', () => {
     }
   }
 });
+test('publisher uses the creation response when the new draft is absent from release listings', t => {
+  const out = temp(t), source = path.join(out, 'source'), bin = path.join(out, 'bin');
+  fs.mkdirSync(source); fs.mkdirSync(bin);
+  for (const file of ['VERSION', 'CITATION.cff', 'CHANGELOG.md', 'docs/CITATION.md']) {
+    const dest = path.join(source, file); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.copyFileSync(path.join(root, file), dest);
+  }
+  fs.mkdirSync(path.join(source, 'dist'));
+  const version = read('VERSION').trim(), archive = `action-plan-kit-${version}.tar.gz`, sha = 'a'.repeat(40);
+  fs.writeFileSync(path.join(source, 'dist', archive), 'synthetic archive');
+  const log = path.join(out, 'calls.jsonl');
+  fs.writeFileSync(path.join(bin, 'gh'), `#!/usr/bin/env node
+const fs = require('fs'), args = process.argv.slice(2);
+fs.appendFileSync(process.env.MOCK_CALLS, JSON.stringify(args) + '\\n');
+if (args[0] === 'api' && args.some(a => a.includes('/commits/'))) console.log('${sha}');
+else if (args.includes('POST')) console.log(JSON.stringify({id: 1, tag_name: 'v${version}', draft: true, assets: []}));
+else if (args[0] === 'api') console.log('[]');
+`, { mode: 0o755 });
+  execFileSync(process.execPath, [path.join(root, '.github/scripts/release.cjs'), 'publish', `v${version}`, sha], {
+    env: { ...process.env, GH_REPO: 'fixture/project', ACTIONPLAN_RELEASE_SOURCE: source, PATH: bin + path.delimiter + process.env.PATH, MOCK_CALLS: log }, stdio: 'pipe',
+  });
+  const calls = fs.readFileSync(log, 'utf8').trim().split('\n').map(JSON.parse);
+  assert.equal(calls.filter(args => args.some(a => a.includes('/releases?'))).length, 1);
+  assert.equal(calls.filter(args => args[0] === 'release' && args[1] === 'upload').length, 2);
+  assert.ok(calls.some(args => args.includes('--draft=false')));
+});

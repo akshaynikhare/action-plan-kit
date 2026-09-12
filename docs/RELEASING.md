@@ -22,7 +22,8 @@ and publishes an installable `.tar.gz` plus SHA256SUMS. GitHub also provides sou
 Release notes come from that version's changelog section. Nothing is published to npm or PyPI.
 
 For recovery, use **Actions → Release → Run workflow**, enter the existing tag, and select main.
-Reruns keep an existing release and upload only missing assets; they do not overwrite published
+Manual recovery uses the publisher from the selected workflow revision and packages the validated
+tagged source; it does not move the release tag. Reruns keep an existing release and upload only missing assets; they do not overwrite published
 assets. If a published release needs code changes, publish a new version instead of moving its tag.
 
 ## Publish the website

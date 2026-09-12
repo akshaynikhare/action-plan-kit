@@ -67,6 +67,12 @@ jobs:
         with:
           ref: ${{ needs.resolve.outputs.sha }}
           persist-credentials: false
+      - name: Checkout publisher from this workflow revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: .publisher
+          persist-credentials: false
       - name: Set up Node.js
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
@@ -79,4 +85,5 @@ jobs:
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ needs.resolve.outputs.tag }}
           RELEASE_SHA: ${{ needs.resolve.outputs.sha }}
-        run: node .github/scripts/release.cjs publish "$RELEASE_TAG" "$RELEASE_SHA"
+          ACTIONPLAN_RELEASE_SOURCE: ${{ github.workspace }}
+        run: node .publisher/.github/scripts/release.cjs publish "$RELEASE_TAG" "$RELEASE_SHA"
