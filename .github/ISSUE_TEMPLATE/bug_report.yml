@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible problem with the kit
+body:
+  - type: markdown
+    attributes:
+      value: 'For vulnerabilities, use the private link in SECURITY.md. Remove private data from all examples.'
+  - type: input
+    id: version
+    attributes:
+      label: Kit version
+      description: VERSION from the source clone or .actionplan/VERSION in the target
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version and agent/CLI version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the smallest synthetic example and command that demonstrate the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Relevant output
+      description: Redact credentials and private project data.
+      render: text

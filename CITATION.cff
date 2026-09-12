@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use ActionPlan Kit in research or publications, please cite this software."
+type: software
+title: "ActionPlan Kit"
+abstract: "A toolkit for planned AI development with focused reviewers, final verification, and human sign-off."
+authors:
+  - family-names: "Nikhare"
+    given-names: "Akshay"
+    website: "https://github.com/akshaynikhare"
+version: "0.2.1"
+date-released: "2026-09-12"
+license: MIT
+repository-code: "https://github.com/akshaynikhare/action-plan-kit"
+url: "https://akshaynikhare.github.io/action-plan-kit/"
+keywords:
+  - AI-assisted development
+  - workflow
+  - quality assurance

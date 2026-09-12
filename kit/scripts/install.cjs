@@ -60,6 +60,7 @@ function main() {
   say(`kit ${version} → ${target}${dry ? ' (preview; no files written)' : ''}`);
   for (const dir of ['planned', 'in-progress', 'archived', 'audit', 'qa', 'locks', 'trend']) mkdir(`.actionplan/${dir}`);
   write('.actionplan/AP.md', read('AP.md'));
+  write('.actionplan/LICENSE', fs.readFileSync(path.join(kit, '../LICENSE')));
   for (const dir of ['scripts', 'templates', 'references', 'prompts']) copyTree(dir, `.actionplan/${dir}`);
   if (!dry) for (const file of fs.readdirSync(at('.actionplan/scripts')).filter(f => f.endsWith('.sh'))) fs.chmodSync(at(`.actionplan/scripts/${file}`), 0o755);
   if (!exists('.actionplan/config.json')) write('.actionplan/config.json', JSON.stringify({

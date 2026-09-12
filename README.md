@@ -1,11 +1,12 @@
 # ActionPlan Kit
 
-Created by [Akshay Nikhare](https://github.com/akshaynikhare).
+Created by [Akshay Nikhare](https://github.com/akshaynikhare) · [MIT](LICENSE) · [Website](https://akshaynikhare.github.io/action-plan-kit/).
 
 Ship more, get interrupted less. Plan → answer **all** questions once → agents build everything →
 QA by a different agent → **one poke** when it's your turn. Human signs off last.
 
 ## Install
+Requires Bash, Make and Node.js 22 or 24.
 ```bash
 git clone https://github.com/akshaynikhare/action-plan-kit && cd action-plan-kit
 ./install.sh --target ../my-repo --code AP          # add --with-e2e for the Playwright scaffold
@@ -38,7 +39,7 @@ flowchart LR
 design, SDLC, engineering standard — your folder) · `Makefile` · `/ap:*` commands · `.mcp.json`.
 Run kit gates directly: `node .actionplan/scripts/check.cjs` (works with an existing Makefile).
 
-## Uninstall
-```bash
-rm -rf .actionplan .claude/commands/ap && git checkout CLAUDE.md AGENTS.md
-```
+## Guides and community
+[Install / upgrade / remove](docs/INSTALLATION.md) · [Usage](docs/USAGE.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
+[Contributing](CONTRIBUTING.md) · [Code of conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) · [Support](SUPPORT.md)
+[Changelog](CHANGELOG.md) · [Releasing](docs/RELEASING.md) · [Maintainers](MAINTAINERS.md) · [Cite this repository](docs/CITATION.md)

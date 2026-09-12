@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and usage help
+    url: https://github.com/akshaynikhare/action-plan-kit/discussions
+    about: Ask the community about using the kit.
+  - name: Private vulnerability report
+    url: https://github.com/akshaynikhare/action-plan-kit/security/advisories/new
+    about: Report security problems privately.

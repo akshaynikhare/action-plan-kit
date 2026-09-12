@@ -8,4 +8,6 @@ This repo IS the ActionPlan Kit — the source that `install.sh` copies into tar
 - `install.sh` must stay pipe-safe (no prompts) and must never touch git or run a package manager.
 - `index.html` is the GitHub Pages front door (self-contained, zero external requests, SEO per
   `kit/templates/SEO_MARKETING.md` §2). README stays ≤60 lines — it is the github.com repo view.
-- No plan ids in code. Markdown + mermaid only. Never publish web artifacts.
+- No plan ids in code. Guides use Markdown + Mermaid.
+- Repository releases and the public site publish through `.github/workflows/` when authorized.
+  Installed kit agents never publish web artifacts or touch git.
