@@ -49,3 +49,13 @@ test('published pages are self-contained with valid landing-page metadata', () =
   for (const key of ['og:title', 'og:description', 'og:image', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image']) assert.ok(html.includes(`"${key}"`));
   assert.match(read('404.html'), /name="robots" content="noindex"/);
 });
+test('community and user guides have no broken local Markdown links', () => {
+  const markdown = fs.readdirSync(root).filter(f => f.endsWith('.md')).concat(files(path.join(root, 'docs')).filter(f => f.endsWith('.md')).map(f => `docs/${f}`));
+  for (const file of markdown) {
+    for (const match of read(file).matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
+      const target = match[1].split('#')[0];
+      if (!target || /^(https?:|mailto:)/.test(target)) continue;
+      assert.ok(fs.existsSync(path.resolve(root, path.dirname(file), target)), `${file}: broken link ${target}`);
+    }
+  }
+});

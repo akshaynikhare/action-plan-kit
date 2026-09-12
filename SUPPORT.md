@@ -11,3 +11,5 @@ and [troubleshooting](docs/TROUBLESHOOTING.md).
 For a useful bug report, include the kit version, operating system, Node.js version, command,
 expected result, actual result and a minimal example. Redact credentials, private code and customer
 data from logs. This is a community-maintained project; response times are not guaranteed.
+
+To support maintenance, see [sponsorship and other ways to help](SPONSORING.md).

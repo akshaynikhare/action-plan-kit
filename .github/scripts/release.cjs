@@ -5,7 +5,7 @@ const { execFileSync } = require('child_process');
 const root = path.resolve(__dirname, '../..');
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-const bundleFiles = ['install.sh', 'VERSION', 'LICENSE', 'README.md', 'CHANGELOG.md', 'CITATION.cff', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'MAINTAINERS.md', 'docs', 'kit'];
+const bundleFiles = ['install.sh', 'VERSION', 'LICENSE', 'README.md', 'CHANGELOG.md', 'CITATION.cff', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'SECURITY.md', 'SUPPORT.md', 'MAINTAINERS.md', 'SPONSORING.md', 'docs', 'kit'];
 function validate(tag = `v${read('VERSION').trim()}`) {
   const version = read('VERSION').trim();
   if (!/^\d+\.\d+\.\d+$/.test(version) || tag !== `v${version}`) throw Error('Tag must match the stable version in VERSION');
@@ -48,7 +48,8 @@ function publish(tag, sha) {
   const notes = path.join(dir, 'RELEASE_NOTES.md'); fs.writeFileSync(notes, meta.notes);
   if (!release) {
     gh(['release', 'create', tag, '--repo', repo, '--verify-tag', '--draft', '--title', `ActionPlan Kit ${tag}`, '--notes-file', notes]);
-    release = JSON.parse(gh(['api', `repos/${repo}/releases/tags/${tag}`]));
+    release = JSON.parse(gh(['api', `repos/${repo}/releases?per_page=100`])).find(r => r.tag_name === tag);
+    if (!release) throw Error('Created draft release could not be read back');
   }
   const existingArchive = release.assets.find(a => a.name === archive);
   let archiveHash;

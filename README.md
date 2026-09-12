@@ -1,7 +1,5 @@
 # ActionPlan Kit
 
-Created by [Akshay Nikhare](https://github.com/akshaynikhare) · [MIT](LICENSE) · [Website](https://akshaynikhare.github.io/action-plan-kit/).
-
 Ship more, get interrupted less. Plan → answer **all** questions once → agents build everything →
 QA by a different agent → **one poke** when it's your turn. Human signs off last.
 
@@ -43,3 +41,4 @@ Run kit gates directly: `node .actionplan/scripts/check.cjs` (works with an exis
 [Install / upgrade / remove](docs/INSTALLATION.md) · [Usage](docs/USAGE.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
 [Contributing](CONTRIBUTING.md) · [Code of conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) · [Support](SUPPORT.md)
 [Changelog](CHANGELOG.md) · [Releasing](docs/RELEASING.md) · [Maintainers](MAINTAINERS.md) · [Cite this repository](docs/CITATION.md)
+[Sponsor Akshay](https://github.com/sponsors/akshaynikhare) · [Other ways to help](SPONSORING.md) · [MIT license](LICENSE) · [Website](https://akshaynikhare.github.io/action-plan-kit/)

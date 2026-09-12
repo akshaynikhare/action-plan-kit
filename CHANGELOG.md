@@ -5,6 +5,7 @@
 - Add the MIT license with attribution to Akshay Nikhare; installed kits retain a license copy.
 - Add the code of conduct, contribution, security, support, maintenance and citation documents.
 - Add installation, usage, troubleshooting, development and release guides.
+- Add GitHub Sponsors funding links and a sponsorship guide.
 - Add issue forms, a pull request template, CODEOWNERS and automated Action dependency updates.
 - Add CI on Linux/macOS with Node.js 22/24, release archives with checksums, and GitHub Pages deployment.
 - Add a site-only staging step, a local 404 page and social-sharing metadata.
