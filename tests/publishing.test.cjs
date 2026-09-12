@@ -30,10 +30,15 @@ test('release bundle is installable, retains the license and matches its checksu
 });
 test('Pages stages only the explicit public assets and refuses dirty staging', t => {
   const out = path.join(temp(t), 'site'); build(out);
-  assert.deepEqual(files(out), ['.nojekyll', '404.html', 'assets/social-card.png', 'index.html', 'robots.txt', 'sitemap.xml']);
+  assert.deepEqual(files(out), ['.nojekyll', '404.html', 'assets/apple-touch-icon.png', 'assets/favicon-32.png', 'assets/icon-512.png', 'assets/icon.svg', 'assets/social-card.png', 'index.html', 'robots.txt', 'sitemap.xml']);
   assert.throws(() => build(out), /must be empty/);
-  const png = fs.readFileSync(path.join(out, 'assets/social-card.png'));
-  assert.equal(png.readUInt32BE(16), 1200); assert.equal(png.readUInt32BE(20), 630);
+  const pages = read('index.html') + read('404.html');
+  for (const [asset, width, height] of [['social-card.png', 1200, 630], ['favicon-32.png', 32, 32], ['apple-touch-icon.png', 180, 180], ['icon-512.png', 512, 512]]) {
+    const png = fs.readFileSync(path.join(out, 'assets', asset));
+    assert.equal(png.readUInt32BE(16), width, `${asset} width`); assert.equal(png.readUInt32BE(20), height, `${asset} height`);
+    assert.ok(pages.includes(`assets/${asset}`), `published asset is unreferenced: ${asset}`);
+  }
+  assert.ok(pages.includes('assets/icon.svg'), 'published asset is unreferenced: icon.svg');
 });
 test('published pages are self-contained with valid landing-page metadata', () => {
   for (const file of ['index.html', '404.html']) {
@@ -48,6 +53,21 @@ test('published pages are self-contained with valid landing-page metadata', () =
   assert.ok(html.match(/name="description" content="([^"]+)"/)[1].length <= 155);
   for (const key of ['og:title', 'og:description', 'og:image', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image']) assert.ok(html.includes(`"${key}"`));
   assert.match(read('404.html'), /name="robots" content="noindex"/);
+  assert.match(read('robots.txt'), /^Sitemap: https:\/\/akshaynikhare\.github\.io\/action-plan-kit\/sitemap\.xml$/m);
+});
+test('landing-page structured data is valid and mirrors the visible answers', () => {
+  const html = read('index.html');
+  const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  const types = graph.map(node => node['@type']);
+  for (const type of ['Person', 'SoftwareApplication', 'WebSite', 'WebPage', 'HowTo', 'FAQPage']) assert.ok(types.includes(type), `missing ${type}`);
+  const ids = new Set(graph.map(node => node['@id']));
+  for (const reference of JSON.stringify(graph).matchAll(/\{"@id":"([^"]+)"\}/g)) assert.ok(ids.has(reference[1]), `dangling reference ${reference[1]}`);
+  const visible = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').replace(/ ([.,?])(?=\s|$)/g, '$1');
+  for (const question of graph.find(node => node['@type'] === 'FAQPage').mainEntity) {
+    assert.ok(visible.includes(question.name), `question is not on the page: ${question.name}`);
+    assert.ok(visible.includes(question.acceptedAnswer.text), `answer is not on the page: ${question.name}`);
+  }
 });
 test('community and user guides have no broken local Markdown links', () => {
   const markdown = fs.readdirSync(root).filter(f => f.endsWith('.md')).concat(files(path.join(root, 'docs')).filter(f => f.endsWith('.md')).map(f => `docs/${f}`));
