@@ -4,22 +4,289 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Akshay Nikhare">
-<title>ActionPlan Kit — ship more, get interrupted less</title>
-<meta name="description" content="Plan AI development, batch questions, run focused reviews and verify final changes. ActionPlan Kit keeps human sign-off last.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<title>ActionPlan Kit — Spec-driven development for Claude Code</title>
+<meta name="description" content="Open-source spec-driven development toolkit for Claude Code. Plan work, run focused AI reviews, verify changes and keep human sign-off last.">
 <link rel="canonical" href="https://akshaynikhare.github.io/action-plan-kit/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ActionPlan Kit — ship more, get interrupted less">
-<meta property="og:description" content="Batch every question, build the whole sprint, QA by a separate agent, one poke when it's your turn.">
+<meta property="og:site_name" content="ActionPlan Kit">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="ActionPlan Kit — Spec-driven development for Claude Code">
+<meta property="og:description" content="Open-source spec-driven development toolkit for Claude Code. Plan work, run focused AI reviews, verify changes and keep human sign-off last.">
 <meta property="og:url" content="https://akshaynikhare.github.io/action-plan-kit/">
 <meta property="og:image" content="https://akshaynikhare.github.io/action-plan-kit/assets/social-card.png">
-<meta property="og:image:alt" content="ActionPlan Kit by Akshay Nikhare: plan, build, verify, review, sign off">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ActionPlan Kit — spec-driven development for Claude Code: init, plan, clarify, build, test, review">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ActionPlan Kit — ship more, get interrupted less">
-<meta name="twitter:description" content="Plan, build, verify and review AI-assisted changes. Human sign-off stays last.">
+<meta name="twitter:title" content="ActionPlan Kit — Spec-driven development for Claude Code">
+<meta name="twitter:description" content="Open-source spec-driven development toolkit for Claude Code. Plan work, run focused AI reviews, verify changes and keep human sign-off last.">
 <meta name="twitter:image" content="https://akshaynikhare.github.io/action-plan-kit/assets/social-card.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔔</text></svg>">
+<meta name="twitter:image:alt" content="ActionPlan Kit — spec-driven development for Claude Code: init, plan, clarify, build, test, review">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#author",
+      "name": "Akshay Nikhare",
+      "url": "https://github.com/akshaynikhare",
+      "sameAs": [
+        "https://github.com/akshaynikhare",
+        "https://github.com/sponsors/akshaynikhare"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#software",
+      "name": "ActionPlan Kit",
+      "description": "Open-source spec-driven development toolkit for Claude Code. Plan work, run focused AI reviews, verify changes and keep human sign-off last.",
+      "url": "https://akshaynikhare.github.io/action-plan-kit/",
+      "codeRepository": "https://github.com/akshaynikhare/action-plan-kit",
+      "license": "https://github.com/akshaynikhare/action-plan-kit/blob/main/LICENSE",
+      "author": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#author"
+      },
+      "programmingLanguage": [
+        "JavaScript",
+        "Bash"
+      ],
+      "runtimePlatform": "Node.js 22 or 24",
+      "targetProduct": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#application"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#application",
+      "name": "ActionPlan Kit",
+      "alternateName": "action-plan-kit",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Spec-driven development toolkit",
+      "image": "https://akshaynikhare.github.io/action-plan-kit/assets/icon-512.png",
+      "screenshot": "https://akshaynikhare.github.io/action-plan-kit/assets/social-card.png",
+      "operatingSystem": "macOS, Linux",
+      "softwareRequirements": "Bash, Make, Node.js 22 or 24, Claude Code",
+      "url": "https://akshaynikhare.github.io/action-plan-kit/",
+      "downloadUrl": "https://github.com/akshaynikhare/action-plan-kit/releases",
+      "installUrl": "https://github.com/akshaynikhare/action-plan-kit#install",
+      "license": "https://github.com/akshaynikhare/action-plan-kit/blob/main/LICENSE",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#author"
+      },
+      "maintainer": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#author"
+      },
+      "keywords": "spec-driven development, Claude Code, AI coding agents, slash commands, code review, SDLC, QA automation",
+      "featureList": [
+        "Story, acceptance criteria and checklist before code",
+        "Open questions batched into one clarification round",
+        "Fresh-context QA agent that reads only the diff",
+        "Four focused reviewers for acceptance, regressions, security and cleanup",
+        "Seven self-tested static gates with recorded baselines",
+        "Per-file session locks for parallel AI sessions",
+        "Decision memory that survives the next cycle",
+        "Playwright end-to-end walk with six review lenses"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#website",
+      "url": "https://akshaynikhare.github.io/action-plan-kit/",
+      "name": "ActionPlan Kit",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#author"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#webpage",
+      "url": "https://akshaynikhare.github.io/action-plan-kit/",
+      "name": "ActionPlan Kit — Spec-driven development for Claude Code",
+      "description": "Open-source spec-driven development toolkit for Claude Code. Plan work, run focused AI reviews, verify changes and keep human sign-off last.",
+      "inLanguage": "en",
+      "image": "https://akshaynikhare.github.io/action-plan-kit/assets/social-card.png",
+      "isPartOf": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#website"
+      },
+      "mainEntity": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#application"
+      },
+      "hasPart": [
+        {
+          "@id": "https://akshaynikhare.github.io/action-plan-kit/#howto-install"
+        },
+        {
+          "@id": "https://akshaynikhare.github.io/action-plan-kit/#command-list"
+        },
+        {
+          "@id": "https://akshaynikhare.github.io/action-plan-kit/#faq"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#howto-install",
+      "name": "How to install ActionPlan Kit in a repository",
+      "description": "Clone ActionPlan Kit, run its installer against a target repository, then start the intent interview in Claude Code.",
+      "totalTime": "PT5M",
+      "tool": [
+        {"@type": "HowToTool", "name": "Bash"},
+        {"@type": "HowToTool", "name": "Make"},
+        {"@type": "HowToTool", "name": "Node.js 22 or 24"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Clone the kit",
+          "text": "Run: git clone https://github.com/akshaynikhare/action-plan-kit",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#installation"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Install into the target repository",
+          "text": "Run: cd action-plan-kit && ./install.sh --target ../my-repo --code AP",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#installation"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Start the intent interview",
+          "text": "Open the target repository in Claude Code and run /ap:init once per project.",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#commands"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#command-list",
+      "name": "ActionPlan Kit commands for Claude Code",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "/ap:init", "description": "Once per project — the intent interview (why, who, what, how to market)."},
+        {"@type": "ListItem", "position": 2, "name": "/ap:new", "description": "File a story with acceptance criteria and a tickable checklist."},
+        {"@type": "ListItem", "position": 3, "name": "/ap:ask", "description": "Clear every open question in one batch before code is written."},
+        {"@type": "ListItem", "position": 4, "name": "/ap:run", "description": "Build the selected stories, run gates and the QA loop, then report back once."},
+        {"@type": "ListItem", "position": 5, "name": "/ap:status", "description": "Board, velocity and the Mirror — computed verdicts with hard numbers."},
+        {"@type": "ListItem", "position": 6, "name": "make help", "description": "Quick launch for dev, test, lint, check and status in any repository."}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://akshaynikhare.github.io/action-plan-kit/#faq",
+      "isPartOf": {
+        "@id": "https://akshaynikhare.github.io/action-plan-kit/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is ActionPlan Kit?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#what-is-actionplan-kit",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ActionPlan Kit is an open-source toolkit that adds a spec-driven workflow to Claude Code. An installer drops /ap:* commands, focused review agents, static gates and plan storage into an existing repository, so work moves from a written story to verified changes and a human sign-off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install ActionPlan Kit?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#how-do-i-install",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clone the repository, then run ./install.sh --target ../my-repo --code AP against the repository you want to equip. It needs Bash, Make and Node.js 22 or 24. The installer does not run Git and does not install packages, so you review and commit the changes yourself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is spec-driven development in ActionPlan Kit?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#what-is-spec-driven-development",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Work starts with a written story, acceptance criteria and a checklist. Those requirements guide implementation, test evidence and review before a human signs off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is it different from prompting Claude Code directly?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#how-is-it-different",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A plain prompt leaves the requirement, the evidence and the review in chat history. The kit writes them to files in the repository: acceptance criteria are traced to tests, QA is run by a separate agent on the diff, gates run on every check, and decisions are recorded so the next cycle does not undo them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI coding tool does ActionPlan Kit support?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#which-ai-tool",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The kit provides native /ap:* commands and focused agents for Claude Code. It also installs CLAUDE.md and AGENTS.md instructions for tools that read them; other tools may need manual workflow adaptation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which focused review agents are included?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#which-review-agents",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Four focused reviewers check acceptance coverage, caller regressions, security boundaries and cleanup. They report findings without editing code. A separate QA agent reviews the diff, and the orchestrator handles fixes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add ActionPlan Kit to an existing repository?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#existing-repository",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The installer targets an existing repository and preserves its existing Makefile. Run kit gates directly with node .actionplan/scripts/check.cjs. The installer does not run Git or install packages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does passing verification mean the code is bug-free?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#bug-free",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Gates and reviews check specific requirements and supplied changes. They provide evidence for review, but cannot prove the absence of bugs. Human sign-off remains required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ActionPlan Kit free to use?",
+          "url": "https://akshaynikhare.github.io/action-plan-kit/#is-it-free",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The kit is open source under the MIT license. AI tool and model usage may have separate costs. You can support maintenance through GitHub Sponsors."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
-  :root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--txt:#e6edf3;--dim:#8b949e;--acc:#3fb950;--acc2:#58a6ff;--warn:#d29922}
+  /* Light is the default; dark applies only when the system asks for it. */
+  :root{color-scheme:light dark;--bg:#ffffff;--panel:#f6f8fa;--line:#d0d7de;--txt:#1f2328;--dim:#59636e;--acc:#116329;--acc2:#0969da;--warn:#7d4e00}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--txt:#e6edf3;--dim:#8b949e;--acc:#3fb950;--acc2:#58a6ff;--warn:#d29922}
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
   code,pre,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -30,6 +297,9 @@
   .sub{color:var(--dim);font-size:1.15rem;max-width:620px;margin:20px auto 0}
   .cta{display:inline-block;margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 22px;color:var(--acc);text-align:left}
   section{padding:48px 0;border-top:1px solid var(--line)}
+  nav{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px}
+  .faq h3{font-size:1.1rem;margin-top:24px}
+  .faq p{color:var(--dim);margin-top:6px}
   h2{font-size:1.5rem;margin-bottom:8px}
   .lead{color:var(--dim);margin-bottom:28px}
   .flow{display:flex;flex-wrap:wrap;gap:10px;counter-reset:step}
@@ -56,17 +326,20 @@
 <body>
 
 <header class="wrap">
-  <h1>Plan once. Build everything.<br><em>Get interrupted twice.</em></h1>
-  <p class="sub">ActionPlan Kit is a drop-in framework for AI-driven development: every question answered
-  up front, the whole sprint built without check-ins, QA by a separate agent — then one poke when it's your turn.</p>
+  <h1>ActionPlan Kit<br><em>Spec-driven development for Claude Code</em></h1>
+  <p class="sub">ActionPlan Kit is an open-source toolkit for spec-driven AI development in Claude Code.
+  Turn requirements into plans, batch questions, build with focused reviews and verify changes before human sign-off.</p>
   <pre class="cta mono">git clone https://github.com/akshaynikhare/action-plan-kit
 cd action-plan-kit &amp;&amp; ./install.sh --target ../my-repo --code AP</pre>
+  <nav aria-label="Page sections"><a href="#workflow">Workflow</a><a href="#guardrails">Guardrails</a><a href="#commands">Commands</a><a href="#installation">Installation</a><a href="#faq">FAQ</a></nav>
 </header>
 
-<section>
+<main>
+
+<section id="workflow">
   <div class="wrap">
-    <h2>The contract — a full SDLC, two interruptions</h2>
-    <p class="lead">Every mid-build question costs you a context switch. The kit spends your attention twice, on purpose, never ten times.</p>
+    <h2>How does the ActionPlan Kit workflow work?</h2>
+    <p class="lead">Plan the work, resolve questions together, build, verify and review. The workflow aims to batch human input at clarification and final sign-off; unresolved blockers are recorded.</p>
     <div class="flow">
       <div><b>Init</b><small>intent interview — why, who, market</small></div>
       <div><b>Plan</b><small>story, acceptance criteria, checklist</small></div>
@@ -78,12 +351,12 @@ cd action-plan-kit &amp;&amp; ./install.sh --target ../my-repo --code AP</pre>
   </div>
 </section>
 
-<section>
+<section id="guardrails">
   <div class="wrap">
-    <h2>What keeps it honest</h2>
+    <h2>What keeps ActionPlan Kit honest</h2>
     <div class="grid">
       <div class="card"><b>Fresh-context QA</b><p>A different agent reads only the diff — 7–8 line brief in, 7–8 line report back. It can't inherit the builder's assumptions.</p></div>
-      <div class="card"><b>Static gates that ratchet</b><p>7 selftested gates: requirement→test tracing, no plan ids in code, DoD before archive, dead-link detection. Baselines only shrink.</p></div>
+      <div class="card"><b>Static gates that ratchet</b><p>7 selftested gates: requirement→test tracing, no plan ids in code, DoD before archive, dead-link detection. Ratchets flag new violations against the recorded baseline.</p></div>
       <div class="card"><b>The Mirror</b><p><code>make status</code> ends with computed verdicts: "6 of 14 criteria have no test. You are shipping hope." No number, no line.</p></div>
       <div class="card"><b>One session per file</b><p>File locks stop parallel AI sessions colliding. Works across tools — the rules ship in both CLAUDE.md and AGENTS.md.</p></div>
       <div class="card"><b>Decision memory</b><p>DECISIONS.md stops the next cycle "fixing back" a deliberate choice. Sliced by script, never read whole — token-cheap.</p></div>
@@ -92,9 +365,9 @@ cd action-plan-kit &amp;&amp; ./install.sh --target ../my-repo --code AP</pre>
   </div>
 </section>
 
-<section>
+<section id="commands">
   <div class="wrap">
-    <h2>Daily use</h2>
+    <h2>Claude Code commands for daily use</h2>
     <table>
       <tr><th>Command</th><th>When</th></tr>
       <tr><td>/ap:init</td><td>Once per project — the intent interview (why, who, what, how to market)</td></tr>
@@ -107,17 +380,44 @@ cd action-plan-kit &amp;&amp; ./install.sh --target ../my-repo --code AP</pre>
   </div>
 </section>
 
-<section>
+<section id="installation">
   <div class="wrap">
-    <h2>What lands in your repo</h2>
-<pre><span class="c"># agents' folder — delete it and the kit is gone</span>
+    <h2>What does ActionPlan Kit install?</h2>
+    <p class="lead">Requires Bash, Make and Node.js 22 or 24. Use the commands above to install into a target repository. See the <a href="https://github.com/akshaynikhare/action-plan-kit/blob/main/docs/INSTALLATION.md">installation, upgrade and removal guide</a>.</p>
+<pre><span class="c"># workflow state and verification tools</span>
 .actionplan/   <span class="g">plans · QA evidence · gates · locks · decision memory</span>
 <span class="c"># your folder — intent, constitution, design system, SDLC, standards</span>
 docs/          <span class="g">_architecture/ · _design/ · _workflow/</span>
 Makefile       <span class="g">quick launch, generated from your stack</span>
-CLAUDE.md + AGENTS.md  <span class="g">one managed block each — works in any AI tool</span></pre>
+CLAUDE.md + AGENTS.md  <span class="g">managed instructions for compatible AI tools</span></pre>
   </div>
 </section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <h3 id="what-is-actionplan-kit">What is ActionPlan Kit?</h3>
+    <p>ActionPlan Kit is an open-source toolkit that adds a spec-driven workflow to Claude Code. An installer drops /ap:* commands, focused review agents, static gates and plan storage into an existing repository, so work moves from a written story to verified changes and a human sign-off.</p>
+    <h3 id="how-do-i-install">How do I install ActionPlan Kit?</h3>
+    <p>Clone the repository, then run <code>./install.sh --target ../my-repo --code AP</code> against the repository you want to equip. It needs Bash, Make and Node.js 22 or 24. The installer does not run Git and does not install packages, so you review and commit the changes yourself.</p>
+    <h3 id="what-is-spec-driven-development">What is spec-driven development in ActionPlan Kit?</h3>
+    <p>Work starts with a written story, acceptance criteria and a checklist. Those requirements guide implementation, test evidence and review before a human signs off.</p>
+    <h3 id="how-is-it-different">How is it different from prompting Claude Code directly?</h3>
+    <p>A plain prompt leaves the requirement, the evidence and the review in chat history. The kit writes them to files in the repository: acceptance criteria are traced to tests, QA is run by a separate agent on the diff, gates run on every check, and decisions are recorded so the next cycle does not undo them.</p>
+    <h3 id="which-ai-tool">Which AI coding tool does ActionPlan Kit support?</h3>
+    <p>The kit provides native /ap:* commands and focused agents for Claude Code. It also installs CLAUDE.md and AGENTS.md instructions for tools that read them; other tools may need manual workflow adaptation.</p>
+    <h3 id="which-review-agents">Which focused review agents are included?</h3>
+    <p>Four focused reviewers check acceptance coverage, caller regressions, security boundaries and cleanup. They report findings without editing code. A separate QA agent reviews the diff, and the orchestrator handles fixes.</p>
+    <h3 id="existing-repository">Can I add ActionPlan Kit to an existing repository?</h3>
+    <p>Yes. The installer targets an existing repository and preserves its existing Makefile. Run kit gates directly with <code>node .actionplan/scripts/check.cjs</code>. The installer does not run Git or install packages.</p>
+    <h3 id="bug-free">Does passing verification mean the code is bug-free?</h3>
+    <p>No. Gates and reviews check specific requirements and supplied changes. They provide evidence for review, but cannot prove the absence of bugs. Human sign-off remains required.</p>
+    <h3 id="is-it-free">Is ActionPlan Kit free to use?</h3>
+    <p>The kit is open source under the MIT license. AI tool and model usage may have separate costs. You can support maintenance through <a href="https://github.com/sponsors/akshaynikhare">GitHub Sponsors</a>.</p>
+    <p>Read the <a href="https://github.com/akshaynikhare/action-plan-kit/blob/main/docs/USAGE.md">usage guide</a>, <a href="https://github.com/akshaynikhare/action-plan-kit/blob/main/docs/TROUBLESHOOTING.md">troubleshooting guide</a> or <a href="https://github.com/akshaynikhare/action-plan-kit/blob/main/docs/CITATION.md">citation guide</a>.</p>
+  </div>
+</section>
+</main>
 
 <footer>
   <p>By <a href="https://github.com/akshaynikhare">Akshay Nikhare</a> ·

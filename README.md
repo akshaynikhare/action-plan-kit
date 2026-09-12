@@ -1,7 +1,10 @@
 # ActionPlan Kit
 
-Ship more, get interrupted less. Plan → answer **all** questions once → agents build everything →
-QA by a different agent → **one poke** when it's your turn. Human signs off last.
+An open-source spec-driven development toolkit for **Claude Code**. Turn requirements into plans,
+batch questions, build with focused AI reviews and verify changes. Human signs off last.
+
+It installs `/ap:*` slash commands, focused review agents, static gates and plan storage into an
+existing repository. Bash, Make and Node.js only — no service, no account, MIT licensed.
 
 ## Install
 Requires Bash, Make and Node.js 22 or 24.

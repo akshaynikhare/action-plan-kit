@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+- Reposition the site and README around spec-driven development for Claude Code.
+- Add JSON-LD structured data (software, how-to, command list, FAQ) and an on-page FAQ section.
+- Add Open Graph image dimensions, robots/theme-color metadata and an explicit AI-crawler allowlist.
+- Add a publishing test that keeps structured data valid and mirrored by the visible answers.
+- Follow the system colour scheme on the site, defaulting to light when no preference is set.
+- Add a duotone check icon (SVG, 32px, apple-touch, 512px) and redraw the social share card.
+
 ## [0.2.1] - 2026-09-12
 
 - Add the MIT license with attribution to Akshay Nikhare; installed kits retain a license copy.
