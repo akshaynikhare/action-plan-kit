@@ -1,7 +1,5 @@
 # ActionPlan Kit
 
-Created by [Akshay Nikhare](https://github.com/akshaynikhare).
-
 Ship more, get interrupted less. Plan → answer **all** questions once → agents build everything →
 QA by a different agent → **one poke** when it's your turn. Human signs off last.
 
